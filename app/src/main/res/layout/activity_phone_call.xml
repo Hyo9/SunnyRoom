@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PhoneCallActivity">
+
+    <TextView
+        android:textSize="20sp"
+        android:text="전화걸기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="103dp"
+        android:src="@drawable/phone_call_explain" />
+    <TextView
+        android:textSize="20sp"
+        android:text="시간설정"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:onClick="mOnClick"
+        android:id="@+id/time_setting_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="시간 설정하러가기"/>
+
+    <TextView
+        android:id="@+id/time_setting_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="xxxx"/>
+
+    <TextView
+        android:textSize="20sp"
+        android:text="횟설정"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:onClick="mOnClick"
+        android:id="@+id/iter_up_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"/>
+    <Button
+        android:onClick="mOnClick"
+        android:id="@+id/iter_down_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"/>
+
+    <TextView
+        android:id="@+id/iter_setting_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="xxxx"/>
+
+    <TextView
+        android:textSize="20sp"
+        android:text="시간수신인설정"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/receiver_setting_editor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="이름입력"/>
+    <Button
+        android:onClick="mOnClick"
+        android:id="@+id/receiver_setting_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="저장"/>
+
+    <TextView
+        android:id="@+id/receiver_setting_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="xxxx"/>
+
+</LinearLayout>
