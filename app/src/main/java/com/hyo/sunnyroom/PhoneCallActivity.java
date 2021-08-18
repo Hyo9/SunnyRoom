@@ -3,12 +3,15 @@ package com.hyo.sunnyroom;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -16,6 +19,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class PhoneCallActivity extends AppCompatActivity {
+    private Context mContext;
     int mYear, mMonth, mDay, mHour, mMinute;
     int mCount = 0;
     TextView mTxtTime, mTxtIter, mTxtReceiver;
@@ -25,6 +29,9 @@ public class PhoneCallActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_call);
+
+        // preference 세
+        mContext = this;
 
         // 시간세팅
         mTxtTime = (TextView) findViewById(R.id.time_setting_text);
@@ -45,6 +52,7 @@ public class PhoneCallActivity extends AppCompatActivity {
 
         // 수신인 세팅
         mTxtReceiver = (TextView) findViewById(R.id.receiver_setting_text);
+        mTxtReceiver.setText("");
         iTxtReceiver = (EditText) findViewById(R.id.receiver_setting_editor);
     }
 
@@ -78,6 +86,30 @@ public class PhoneCallActivity extends AppCompatActivity {
                 mTxtReceiver.setText(iTxtReceiver.getText().toString());
                 break;
 
+            case R.id.setting_done_button:
+                // setting 완료시 sharedpreference에 저장
+                //String sTime, sReceiver, sIter; // 알람시간, 수신인, 반복횟수
+
+                if(mTxtReceiver.getText().toString().equals("")) {
+                    Toast.makeText(PhoneCallActivity.this, "수신인 입력해주세요", Toast.LENGTH_LONG).show();
+                    //Log.d("pre receiver", PreferenceManager.getString(mContext, "sReceiver"));
+                }
+                else if(mCount == 0) {
+                    Toast.makeText(PhoneCallActivity.this, "횟수 입력해주세요", Toast.LENGTH_LONG).show();
+                    //Log.d("pre time", PreferenceManager.getString(mContext, "sIter")+"");
+                }
+                else {
+                    PreferenceManager.setString(mContext, "sTime", mTxtTime.getText().toString());
+                    PreferenceManager.setString(mContext, "sReceiver", mTxtReceiver.getText().toString());
+                    PreferenceManager.setInt(mContext, "sIter", mCount);
+
+                    Log.d("pre time", PreferenceManager.getString(mContext, "sTime"));
+                    Log.d("pre receiver", PreferenceManager.getString(mContext, "sReceiver"));
+                    Log.d("pre time", PreferenceManager.getInt(mContext, "sIter") + "");
+
+                    Toast.makeText(PhoneCallActivity.this, "저장완료", Toast.LENGTH_LONG).show();
+                }
+                break;
         }
     }
 
